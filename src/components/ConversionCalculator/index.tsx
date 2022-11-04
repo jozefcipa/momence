@@ -1,5 +1,5 @@
 import { Currency } from '../../api'
-import { Button, Col, Input, Row, Select, Typography } from 'antd'
+import { Button, Col, Divider, Input, Row, Select, Typography } from 'antd'
 import { useState } from 'react'
 
 interface Props {
@@ -49,7 +49,12 @@ const ConversionCalculator = (props: Props) => {
                     />
                 </Col>
             </Row>
-            { conversionResult !== null && <Typography.Title level={2}>{conversionResult} {currency}</Typography.Title> }
+            { conversionResult !== null && (
+                <>
+                    <Divider orientation="left">Result</Divider>
+                    <span>{amount} CZK 👉 {conversionResult} {currency} </span>
+                </>
+            )}
         </>
     )
 }

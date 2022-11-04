@@ -3,6 +3,7 @@ import { Table, Typography } from 'antd'
 
 interface Props {
     currencies: Array<Currency>
+    isLoading: boolean
 }
 
 const CurrencyTable = (props: Props) => {
@@ -10,7 +11,7 @@ const CurrencyTable = (props: Props) => {
         <>
             <Typography.Title level={2}>Exchange rates</Typography.Title>
             <Table
-                // loading
+                loading={props.isLoading}
                 bordered
                 pagination={false}
                 columns={[

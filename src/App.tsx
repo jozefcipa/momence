@@ -1,28 +1,27 @@
-import React, { useEffect, useState } from 'react'
-import { Currency, loadExchangeRates } from './api'
+import React from 'react'
+import { useExchangeRates } from './api'
 import CurrencyTable from './components/CurrencyTable'
 import ConversionCalculator from './components/ConversionCalculator'
 import { Col, Row } from 'antd'
 
 function App() {
-  const [currencies, setCurrencies] = useState<Array<Currency>>([])
+    const { isLoading, data: currencies, error } = useExchangeRates()
 
-  useEffect(() => {
-    const loadCurrencies = async () => {
-        // TODO: use react query
-      setCurrencies(await loadExchangeRates())
+    // TODO: polish design
+
+    if (error) {
+        alert('Failed to load data')
+        console.error(error)
     }
-    loadCurrencies()
-  }, [])
 
-  return (
-      <Row>
-        <Col span={8} offset={8}>
-            <ConversionCalculator currencies={currencies} />
-            <CurrencyTable currencies={currencies} />
-        </Col>
-      </Row>
-  )
+    return (
+        <Row>
+            <Col span={8} offset={8}>
+                <ConversionCalculator currencies={currencies ?? []} />
+                <CurrencyTable currencies={currencies ?? []} isLoading={isLoading}/>
+            </Col>
+          </Row>
+      )
 }
 
 export default App;
