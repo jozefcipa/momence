@@ -17,11 +17,9 @@ function App() {
 
   return (
       <Row>
-        <Col span={8}>
-          <CurrencyTable currencies={currencies} />
-        </Col>
-        <Col span={8}>
-          <ConversionCalculator currencies={currencies} />
+        <Col span={8} offset={8}>
+            <ConversionCalculator currencies={currencies} />
+            <CurrencyTable currencies={currencies} />
         </Col>
       </Row>
   )

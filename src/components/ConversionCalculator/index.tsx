@@ -21,17 +21,21 @@ const ConversionCalculator = (props: Props) => {
             return
         }
 
-        setConversionResult(amount * (foreignCurrency.rate / foreignCurrency.amount))
+        setConversionResult(Number(((amount/foreignCurrency.rate) * foreignCurrency.amount).toFixed(2))) // * (foreignCurrency.rate / foreignCurrency.amount))
     }
 
     return (
         <>
             <Typography.Title>Conversion calculator</Typography.Title>
             <Row>
-                <Col span={8}>
-                    <Input placeholder="Enter amount" type="number" onChange={evt => {
+                <Col span={7}>
+                    <Input placeholder="Enter amount in CZK" type="number" onChange={evt => {
                         setAmount(Number(evt.target.value))
                     }}/>
+                </Col>
+                <Col span={1}>CZK</Col>
+                <Col span={8}>
+                    <Button block type="primary" onClick={calculateConversion}>Convert</Button>
                 </Col>
                 <Col span={8}>
                     <Select
@@ -44,11 +48,8 @@ const ConversionCalculator = (props: Props) => {
                         }))}
                     />
                 </Col>
-                <Col span={8}>
-                    <Button block type="primary" onClick={calculateConversion}>Convert</Button>
-                </Col>
             </Row>
-            { conversionResult !== null && <Typography.Title level={2}>{conversionResult} CZK</Typography.Title> }
+            { conversionResult !== null && <Typography.Title level={2}>{conversionResult} {currency}</Typography.Title> }
         </>
     )
 }
