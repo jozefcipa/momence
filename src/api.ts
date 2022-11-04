@@ -2,8 +2,6 @@ import { useQuery } from 'react-query'
 
 const API_URL = 'https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt'
 
-// TODO: fix issue with CORS proxy
-
 export interface Currency {
     country: string
     currency: string
@@ -33,7 +31,6 @@ const parseResponse = (response: string): Array<Currency> => {
             }
         })
 }
-
 
 export const useExchangeRates = () => {
     return useQuery('exchangeRates', async () => {
