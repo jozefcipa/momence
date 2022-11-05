@@ -9,7 +9,6 @@ const { Content } = Layout
 function App() {
     const { isLoading, data: currencies, error } = useExchangeRates()
 
-    // TODO table scrolling
     // TODO: CORS proxy
 
     if (error) {
@@ -19,7 +18,7 @@ function App() {
 
     return (
         <Layout>
-            <Content>
+            <Content style={{ height: '100vh' }}>
                 <Row justify="center">
                     <Col lg={12} sm={20} xs={20}>
                         <Typography.Title >Conversion calculator</Typography.Title>
