@@ -1,6 +1,7 @@
 import { useQuery } from 'react-query'
 
-const API_URL = 'https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt'
+// Domain is configured in package.json "proxy"
+const API_URL = '/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt'
 
 export interface Currency {
     country: string

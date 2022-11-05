@@ -9,8 +9,6 @@ const { Content } = Layout
 function App() {
     const { isLoading, data: currencies, error } = useExchangeRates()
 
-    // TODO: CORS proxy
-
     if (error) {
         alert('Failed to load data')
         console.error(error)
