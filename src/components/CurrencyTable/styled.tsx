@@ -3,12 +3,13 @@ import styled from 'styled-components'
 export const Container = styled.div`
   background: pink;
   padding: 20px;
-  overflow: hidden;
+  
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  overflow: hidden;
+  height: 80vh;
 `
 
 export const TableWrapper = styled.div`
-    
+    overflow: scroll;
 `

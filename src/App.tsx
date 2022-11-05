@@ -10,7 +10,6 @@ function App() {
     const { isLoading, data: currencies, error } = useExchangeRates()
 
     // TODO table scrolling
-    // TODO: responsivity
     // TODO: CORS proxy
 
     if (error) {
@@ -21,9 +20,9 @@ function App() {
     return (
         <Layout>
             <Content>
-                <Row>
-                    <Col span={8} offset={8}>
-                        <Typography.Title>Conversion calculator</Typography.Title>
+                <Row justify="center">
+                    <Col lg={12} sm={20} xs={20}>
+                        <Typography.Title >Conversion calculator</Typography.Title>
                         <ConversionCalculator currencies={currencies ?? []} />
                         <CurrencyTable currencies={currencies ?? []} isLoading={isLoading}/>
                     </Col>
